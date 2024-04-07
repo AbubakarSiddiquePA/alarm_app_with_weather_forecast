@@ -154,7 +154,7 @@ class _WeatherHomeState extends State<WeatherHome> {
         title: const Text(
           'Weather Screen',
           style: TextStyle(
-              color: const Color.fromARGB(255, 233, 80, 9),
+              color: Color.fromARGB(255, 233, 80, 9),
               fontWeight: FontWeight.bold),
         ),
       ),

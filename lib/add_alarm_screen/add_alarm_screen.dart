@@ -84,7 +84,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                 child: const Text(
                   "Save",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     color: Color.fromARGB(255, 233, 80, 9),
                   ),
                 ),
@@ -130,11 +130,13 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                 child: const Text(
                   "Cancel",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     color: Color.fromARGB(255, 233, 80, 9),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
             ],
           ),
@@ -214,7 +216,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
       context,
       MaterialPageRoute(
           builder: (context) =>
-              HomePage()), // Provide the builder for MyHomePage
+              const HomePage()), // Provide the builder for MyHomePage
       (route) => false,
     );
     // Once deleted, you can navigate back to the previous screen or perform any other action
@@ -286,7 +288,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
           id: 0,
           channelKey: 'basic_channel',
           title: '${_labelController.text}',
-          body: 'It\'s time for your alarm!',
+          body: 'Alarm...........!',
         ),
         schedule: NotificationCalendar(
           hour: selectedTime.hour,

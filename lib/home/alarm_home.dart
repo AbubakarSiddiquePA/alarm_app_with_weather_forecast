@@ -2,7 +2,6 @@ import 'package:alarm_app_forecast/add_alarm_screen/add_alarm_screen.dart';
 import 'package:alarm_app_forecast/database/database.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (ctx) => AddAlarmScreen(
+                              builder: (ctx) => const AddAlarmScreen(
                                     addAlarm: true,
                                   )));
                     },
@@ -60,6 +59,12 @@ class _HomePageState extends State<HomePage> {
               valueListenable: Hive.box<Alarm>('alarms').listenable(),
               builder: (context, box, _) {
                 final alarms = box.values.toList().cast<Alarm>();
+                if (alarms.isEmpty) {
+                  return const Center(
+                    child:
+                        Text("No Alarms yet", style: TextStyle(fontSize: 18)),
+                  );
+                }
                 return ListView.separated(
                   itemBuilder: (context, index) {
                     final alarm = alarms[index];
@@ -78,8 +83,9 @@ class _HomePageState extends State<HomePage> {
                       title: Text(
                         alarm.label ?? '', // Show the alarm label
                         style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       subtitle: Text(
@@ -87,8 +93,8 @@ class _HomePageState extends State<HomePage> {
                             ? '${alarm.time!.hour}:${alarm.time!.minute}' // Show the alarm time
                             : '',
                         style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                           fontSize: 20,
                         ),
                       ),

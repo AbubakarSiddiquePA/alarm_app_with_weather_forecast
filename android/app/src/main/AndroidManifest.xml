@@ -4,7 +4,7 @@
 
 
     <application
-        android:label="alarm_app_forecast"
+        android:label="AlarmCast"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
